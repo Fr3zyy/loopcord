@@ -1,26 +1,20 @@
 import mongoose from "mongoose";
 
-export async function LoadDatabase(uri, options = {}) {
+export async function ConnectDatabase(uri, options = {}) {
   try {
     await mongoose.connect(uri, options);
 
     mongoose.connection.on("error", (err) => {
-      console.error("MongoDB bağlantı hatası:", err);
+      console.error("MongoDB connection error:", err);
     });
 
     mongoose.connection.on("disconnected", () => {
-      console.warn("MongoDB bağlantısı kesildi.");
-    });
-
-    process.on("SIGINT", async () => {
-      await mongoose.connection.close();
-      console.log("MongoDB bağlantısı kapatıldı.");
-      process.exit(0);
+      console.warn("MongoDB connection lost.");
     });
 
     return mongoose.connection;
   } catch (error) {
-    console.error("MongoDB'ye bağlanırken bir hata oluştu:", error);
+    console.error("Error connecting to MongoDB:", error);
     throw error;
   }
 }

@@ -2,7 +2,7 @@ import { Client, GatewayIntentBits, Collection } from "discord.js";
 import { REST } from "@discordjs/rest";
 import { Routes } from "discord-api-types/v9";
 import config from "./config.js";
-import { LoadDatabase } from "./src/Handlers/ConnectDatabase.js";
+import { ConnectDatabase } from "./src/Handlers/ConnectDatabase.js";
 import { Logger } from "./src/Utils/Logger.js";
 import { LoadCommands } from "./src/Handlers/LoadCommands.js";
 import { LoadEvents } from "./src/Handlers/LoadEvents.js";
@@ -43,7 +43,7 @@ async function registerSlashCommands() {
 
 async function initializeBot() {
   try {
-    await LoadDatabase(config.database.uri);
+    await ConnectDatabase(config.database.uri);
     client.logger.info("Database connection successful.");
 
     await LoadCommands(client);
