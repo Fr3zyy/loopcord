@@ -3,7 +3,7 @@ import { EmbedBuilder } from "discord.js";
 export const createPolicyEmbed = () => {
   return new EmbedBuilder()
     .setColor("#0099ff")
-    .setTitle("Bot Usage Policy")
+    .setTitle("LoopCord Usage Policy")
     .setDescription("Please read our bot usage policy carefully.")
     .addFields(
       {
