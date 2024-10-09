@@ -1,5 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
+import { ThemeProvider } from "@/components/Providers/Theme";
+import AuthProvider from "@/components/Providers/Auth";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -13,8 +15,8 @@ const geistMono = localFont({
 });
 
 export const metadata = {
-  title: "LookCord #SOON",
-  description: "LooKCord description.",
+  title: "LoopCord #SOON",
+  description: "LoopCord description.",
 };
 
 export default function RootLayout({ children }) {
@@ -23,7 +25,11 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <AuthProvider>
+          <ThemeProvider attribute="class" defaultTheme="dark">
+            {children}
+          </ThemeProvider>
+        </AuthProvider>
       </body>
     </html>
   );

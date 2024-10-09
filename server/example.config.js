@@ -1,11 +1,18 @@
 export default {
+  server: {
+    port: 3001,
+    allowedOrigins: ['http://localhost:3000', 'https://loopcord.com']
+  },
   bot: {
     name: "",
     clientId: "",
+    clientSecret: "",
+    callbackURL: "",
     token: "",
   },
   developers: [""],
-  database: {  //mongodb
+  database: {
+    //mongodb
     uri: "",
   },
   guild: {

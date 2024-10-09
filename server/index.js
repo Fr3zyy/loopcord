@@ -6,6 +6,7 @@ import { ConnectDatabase } from "./src/Handlers/ConnectDatabase.js";
 import { Logger } from "./src/Utils/Logger.js";
 import { LoadCommands } from "./src/Handlers/LoadCommands.js";
 import { LoadEvents } from "./src/Handlers/LoadEvents.js";
+import startServer from "./src/Server/index.js";
 
 const client = new Client({
   intents: [
@@ -53,8 +54,9 @@ async function initializeBot() {
     client.logger.info("Bot logged in successfully.");
 
     await registerSlashCommands();
+    startServer(client);
   } catch (error) {
-    client.logger.error("An error occurred while initializing the bot:", error);
+    console.log("An error occurred while initializing the bot:", error);
     process.exit(1);
   }
 }
