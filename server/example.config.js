@@ -1,7 +1,8 @@
 export default {
   server: {
     port: 3001,
-    allowedOrigins: ['http://localhost:3000', 'https://loopcord.com']
+    allowedOrigins: ['http://localhost:3000', 'https://loopcord.com'],
+    frontEnd: ""
   },
   bot: {
     name: "",

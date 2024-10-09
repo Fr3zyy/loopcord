@@ -1,6 +1,7 @@
 import express from "express";
 import passport from "passport";
 import isAuthenticated from "../middlewares/isAuthenticated.js";
+import config from "../../../config.js";
 
 const router = express.Router();
 
@@ -13,7 +14,7 @@ router.get(
   "/discord/callback",
   passport.authenticate("discord", { failureRedirect: "/login" }),
   (req, res) => {
-    res.redirect("/dashboard");
+    res.redirect(config.server.frontEnd);
   }
 );
 
